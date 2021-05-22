@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TIMER BY AMARTYA</title>
+  </head>
+  <body onload="timer()">
+    <div id="time">Current Time Information : <span id="gmt"></span></div>
+    <br />
+    <h1 style="font-family: Arial;">INPUT TIME FOR COMPARISON</h1>
+    <p>
+      <strong>You Need to Put Your Cursor Away After Typing and Enter a Time Which Represents Future </strong>
+    </p>
+    <div class="date_time">
+      <span>HOUR </span><input type="text" maxlength="2" id="hour" /> &nbsp;
+      <span>MINUTE </span><input type="text" maxlength="2" id="minute" /> &nbsp;
+      <span>SECONDS </span><input type="text" maxlength="2" id="second" />
+    </div>
+
+    <script type="text/javascript">
+      function timer() {
+        var time = new Date();
+        document.querySelector("span").innerHTML = time.toString();
+
+        document
+          .querySelector(".date_time")
+          .addEventListener("mouseout", function () {
+            var HoursActual = time.getHours();
+            var MinutesActual = time.getMinutes();
+            var SecondsActual = time.getSeconds();
+            
+            
+            var hourInput = parseInt(document.querySelector("#hour").value);
+            var minutesInput = parseInt(document.querySelector("#minute").value);
+            var secondsInput = parseInt(document.querySelector("#second").value);
+            
+            
+            
+            
+            
+
+            if (
+              HoursActual > hourInput ||
+              (HoursActual == hourInput && MinutesActual > minutesInput  ) ||
+              (HoursActual == hourInput && MinutesActual == minutesInput  && SecondsActual >= secondsInput)
+            ) {
+              document.querySelector("#gmt").style.color = "red";
+              clearTimeout(t);
+            }
+          });
+            var t = setTimeout(timer, 100);
+          
+
+       
+
+      }
+    </script>
+  </body>
+</html>
